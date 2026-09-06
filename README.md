@@ -2,28 +2,46 @@
 
 LITALICO 3daysインターンシップ向けの、チャットAIに貼るプロンプト集です。
 
-## 公開ページ（GitHub Pages）
+公開ページ: https://daiki-enomoto-litalico.github.io/3days-intern-ai-prompts/
 
-https://daiki-enomoto-LITALICO.github.io/3days-intern-ai-prompts/
+## ディレクトリ構成
+
+```
+.
+├── README.md                 このファイル。リポジトリの説明
+├── .gitignore
+├── prompts.md                プロンプト本文（編集の正）
+└── docs/                     GitHub Pages の公開面
+    ├── index.html            学生が開くページ
+    └── assets/
+        ├── css/style.css     配色・レイアウト
+        ├── js/main.js        コピー・タブ・検索・テーマ
+        └── img/mark.png      アイコン／あしらい
+```
+
+- **学生が使うもの** — `docs/`（GitHub Pages）
+- **文面を直すとき** — `prompts.md` を先に直す。公開ページは `docs/index.html` に反映する
 
 ## ローカルで確認
 
 ```bash
-python -m http.server 8000
-# http://localhost:8000 で開く
+python -m http.server 8000 --directory docs
 ```
 
-## 構成
+http://localhost:8000 を開く。
 
-- **基本 1–5** — 開始／対話／見本／分解／レシピの空欄
-- **思考を拡げる 6–18** — 切り口・視点・疑い・メタ
-- **成果物 19–20** — 根拠／スキル
-- **詰まったとき** — 短い一文
+## GitHub Pages
 
-各プロンプトは「コピー」でクリップボードに入ります。一字一句そのままでなくてよい。
+Settings → Pages の Source は次のとおり。
+
+- Branch: `main`
+- Folder: `/docs`
+
+リポジトリ直下の `index.html` は置かない。公開されるのは `docs/` だけ。
 
 ## 注意
 
 - 人が決めるのは課題。AIは深める相棒。
 - 事業アイデアは、課題が固まるまで出さない。
+- 一字一句そのままでなくてよい。
 - AIの回答は誤りを含むことがあります。考える材料として使い、課題はチームで決めてください。
