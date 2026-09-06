@@ -92,6 +92,15 @@
       padding-bottom: 0.5rem;
     }
     .lede { color: var(--muted); font-size: 0.9rem; margin: -0.4rem 0 1rem; }
+    h3.group-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin: 1.35rem 0 0.65rem;
+      color: var(--text);
+    }
+    h3.group-title:first-of-type { margin-top: 0.35rem; }
+    .map-list { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    .map-list li { margin: 0.2rem 0; }
     .page-header {
       display: flex;
       justify-content: space-between;
