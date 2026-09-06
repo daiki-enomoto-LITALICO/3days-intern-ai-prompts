@@ -219,6 +219,11 @@
     .tab-nav button.active { background: var(--primary); color: var(--btn-text); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
+    body.is-searching .tab-panel { display: none; }
+    body.is-searching .tab-panel.has-hit { display: block; }
+    body.is-searching .tab-nav { opacity: 0.45; pointer-events: none; }
+    h3.group-title.search-hidden,
+    p.lede.search-hidden { display: none !important; }
     .search-bar { margin-bottom: 1.5rem; }
     .search-bar input {
       width: 100%;
