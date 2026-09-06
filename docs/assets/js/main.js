@@ -17,7 +17,10 @@
         try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
       }
 
-      function setTab(id) {
+      var currentTab = 'basic';
+
+      function setTab(id, persist) {
+        currentTab = id;
         tabs.forEach(function(t) {
           var isActive = t.id === 'tab-' + id;
           t.classList.toggle('active', isActive);
@@ -26,7 +29,9 @@
         panels.forEach(function(p) {
           p.classList.toggle('active', p.id === 'panel-' + id);
         });
-        try { localStorage.setItem(TAB_KEY, id); } catch (e) {}
+        if (persist !== false) {
+          try { localStorage.setItem(TAB_KEY, id); } catch (e) {}
+        }
       }
 
       function blockSearchText(b) {
@@ -82,10 +87,23 @@
           b.classList.toggle('search-hidden', searching && !match);
         });
 
-        panels.forEach(function(p) {
-          var hits = p.querySelectorAll('.prompt-block:not(.search-hidden), .stuck-list li:not(.search-hidden)');
-          p.classList.toggle('has-hit', searching && hits.length > 0);
-        });
+        if (searching) {
+          panels.forEach(function(p) {
+            var hits = p.querySelectorAll('.prompt-block:not(.search-hidden), .stuck-list li:not(.search-hidden)');
+            var hasHit = hits.length > 0;
+            p.classList.toggle('has-hit', hasHit);
+            p.classList.toggle('active', hasHit);
+          });
+          tabs.forEach(function(t) {
+            var panel = document.getElementById('panel-' + t.id.replace('tab-', ''));
+            var on = panel && panel.classList.contains('has-hit');
+            t.classList.toggle('active', on);
+            t.setAttribute('aria-selected', on);
+          });
+        } else {
+          panels.forEach(function(p) { p.classList.remove('has-hit'); });
+          setTab(currentTab, false);
+        }
 
         hideEmptyGroups(searching);
       }
@@ -94,11 +112,14 @@
       btnThemeLight.addEventListener('click', function() { setTheme('light'); });
       tabs.forEach(function(t) {
         t.addEventListener('click', function() {
+          if (document.body.classList.contains('is-searching')) return;
           setTab(t.id.replace('tab-', ''));
-          setTimeout(filterSearch, 0);
         });
       });
-      document.getElementById('search-input').addEventListener('input', filterSearch);
+      var searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', filterSearch);
+      searchInput.addEventListener('compositionend', filterSearch);
+      searchInput.addEventListener('search', filterSearch);
 
       var savedTheme = localStorage.getItem(THEME_KEY);
       if (savedTheme === 'dark') setTheme('dark');
