@@ -240,12 +240,25 @@
       }
       if (tocBackdrop) tocBackdrop.addEventListener('click', closeToc);
 
+      var stickyChrome = document.querySelector('.sticky-chrome');
+      function syncStickyOffset() {
+        if (!stickyChrome) return;
+        document.documentElement.style.setProperty('--sticky-chrome-h', stickyChrome.offsetHeight + 'px');
+      }
+      syncStickyOffset();
+      if (window.ResizeObserver && stickyChrome) {
+        new ResizeObserver(syncStickyOffset).observe(stickyChrome);
+      } else {
+        window.addEventListener('resize', syncStickyOffset);
+      }
+
       if ('IntersectionObserver' in window) {
+        var stickyH = stickyChrome ? stickyChrome.offsetHeight : 180;
         var io = new IntersectionObserver(function(entries) {
           entries.forEach(function(e) {
             if (e.isIntersecting && e.target.id) setCurrentToc(e.target.id);
           });
-        }, { rootMargin: '-18% 0px -72% 0px', threshold: 0 });
+        }, { rootMargin: '-' + (stickyH + 8) + 'px 0px -60% 0px', threshold: 0 });
         document.querySelectorAll('.prompt-block, .stuck-list li').forEach(function(b) { io.observe(b); });
       }
 
