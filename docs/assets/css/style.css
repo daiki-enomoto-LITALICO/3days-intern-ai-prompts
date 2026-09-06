@@ -185,6 +185,19 @@
       box-shadow: var(--shadow);
     }
     .notice { border-left: 4px solid var(--primary); }
+    .slides-link {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary);
+      color: var(--btn-text);
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .slides-link:hover { background: var(--primary-hover); }
     .brand {
       display: flex;
       align-items: center;
