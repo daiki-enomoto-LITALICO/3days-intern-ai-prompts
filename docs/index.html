@@ -9,11 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260906c">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260906d">
 </head>
 <body>
-  <img class="ashirai" src="assets/img/mark.png" alt="" aria-hidden="true">
-  <div class="container">
+  <div class="toc-backdrop" id="toc-backdrop" hidden></div>
+  <div class="page-shell">
+    <nav class="toc" id="toc" aria-label="プロンプト見出し">
+      <div class="toc-head">見出し</div>
+      <div id="toc-list"></div>
+    </nav>
+    <div class="container">
     <header class="page-header">
       <div class="brand">
         <img class="brand-mark" src="assets/img/mark.png" width="56" height="56" alt="">
@@ -26,6 +31,7 @@
           <button type="button" id="theme-light" class="active" aria-pressed="true">ライト</button>
           <button type="button" id="theme-dark" aria-pressed="false">ダーク</button>
         </div>
+        <button type="button" id="toc-toggle" class="toc-toggle" aria-controls="toc" aria-expanded="false">見出し</button>
       </div>
     </header>
 
@@ -339,8 +345,10 @@
       © LITALICO 2026　3daysインターンシップ<br>
       AIの回答は誤りを含むことがあります。考える材料として使い、課題はチームで決めてください。
     </footer>
+    </div>
   </div>
+  <img class="ashirai" src="assets/img/mark.png" alt="" aria-hidden="true">
 
-  <script src="assets/js/main.js?v=20260906c"></script>
+  <script src="assets/js/main.js?v=20260906d"></script>
 </body>
 </html>
