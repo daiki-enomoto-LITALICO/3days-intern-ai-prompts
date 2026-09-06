@@ -50,7 +50,7 @@
     .toc {
       position: sticky;
       top: 0;
-      width: 252px;
+      width: 268px;
       flex-shrink: 0;
       height: 100vh;
       overflow-y: auto;
@@ -58,6 +58,29 @@
       border-right: 1px solid var(--border);
       background: var(--bg);
       z-index: 4;
+    }
+    .toc-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0 0.2rem 0.85rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #000;
+      box-shadow: var(--shadow);
+    }
+    .toc-brand-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
     }
     .toc-head {
       font-size: 0.72rem;
