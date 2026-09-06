@@ -8,12 +8,12 @@
       var tabIds = ['basic', 'think', 'output', 'stuck'];
 
       function setTheme(mode) {
-        var isLight = mode === 'light';
-        document.body.classList.toggle('theme-light', isLight);
-        btnThemeDark.classList.toggle('active', !isLight);
-        btnThemeLight.classList.toggle('active', isLight);
-        btnThemeDark.setAttribute('aria-pressed', !isLight);
-        btnThemeLight.setAttribute('aria-pressed', isLight);
+        var isDark = mode === 'dark';
+        document.body.classList.toggle('theme-dark', isDark);
+        btnThemeDark.classList.toggle('active', isDark);
+        btnThemeLight.classList.toggle('active', !isDark);
+        btnThemeDark.setAttribute('aria-pressed', isDark);
+        btnThemeLight.setAttribute('aria-pressed', !isDark);
         try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
       }
 
@@ -54,7 +54,7 @@
       document.getElementById('search-input').addEventListener('input', filterSearch);
 
       var savedTheme = localStorage.getItem(THEME_KEY);
-      if (savedTheme === 'light') setTheme('light');
+      if (savedTheme === 'dark') setTheme('dark');
       var savedTab = localStorage.getItem(TAB_KEY);
       if (savedTab && tabIds.indexOf(savedTab) >= 0) setTab(savedTab);
     })();
